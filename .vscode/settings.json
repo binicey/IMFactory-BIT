@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/ros/ros/rosweb_ws/devel/lib/python2.7/dist-packages",
+        "/home/ros/ros/robot_localization_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/ros/ros/rosweb_ws/devel/lib/python2.7/dist-packages",
+        "/home/ros/ros/robot_localization_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ]
+}

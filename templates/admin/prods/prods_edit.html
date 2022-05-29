@@ -1,0 +1,95 @@
+{% extends 'admin/base.html' %}
+{% block title %}
+    <title>修改产品信息</title>
+{% endblock %}
+
+{% block body %}
+    <form class="layui-form">
+        <div class="mainBox">
+                <div class="main-container">
+                    <div class="layui-form-item" style="display: none">
+                        <div class="layui-input-block">
+                            <input type="text" name="id" lay-verify="title" 
+                                   autocomplete="off" placeholder="请输入产品名称"
+                                   class="layui-input" value="{{ user.id }}" hidden>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">产品名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="product_name" lay-verify="title" 
+                                   autocomplete="off" placeholder="请输入产品名称"
+                                   class="layui-input" value="{{ user.product_name }}">
+                        </div>
+                    </div>
+                    <!-- <div class="layui-form-item">
+                        <label class="layui-form-label">库存数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="material_num" lay-verify="title" 
+                                   autocomplete="off" placeholder="请输入库存数量"
+                                   class="layui-input" value="{{ user.material_num }}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">规格型号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="model_speci" lay-verify="title" 
+                                   autocomplete="off" placeholder="请输入规格型号"
+                                   class="layui-input" value="{{ user.model_speci }}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">材料</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="material_mat" lay-verify="title" 
+                                   autocomplete="off" placeholder="请输入材料类型"
+                                   class="layui-input" value="{{ user.material_mat }}">
+                        </div>
+                    </div> -->
+                </div>
+        </div>
+        <div class="bottom">
+            <div class="button-container">
+                <button type="submit" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit=""
+                        lay-filter="user-save">
+                    <i class="layui-icon layui-icon-ok"></i>
+                    提交
+                </button>
+                <button type="reset" class="pear-btn pear-btn-sm">
+                    <i class="layui-icon layui-icon-refresh"></i>
+                    重置
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block models_script %}
+    <script>
+
+      layui.use(['form', 'jquery'], function () {
+        let form = layui.form
+        let $ = layui.jquery
+        form.on('submit(user-save)', function (data) {
+          $.ajax({
+            url: '/api/v1/prod/prod/' + data.field.id,
+            data: JSON.stringify(data.field),
+            dataType: 'json',
+            contentType: 'application/json',
+            type: 'put',
+            success: function (result) {
+              if (result.success) {
+                layer.msg(result.message, { icon: 1, time: 1000 }, function () {
+                  parent.layer.close(parent.layer.getFrameIndex(window.name))//关闭当前页
+                  parent.layui.table.reload('tables')
+                })
+              } else {
+                layer.msg(result.message, { icon: 2, time: 1000 })
+              }
+            },
+          })
+          return false
+        })
+      })
+    </script>
+{% endblock %}

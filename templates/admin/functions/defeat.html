@@ -1,0 +1,543 @@
+
+<html lang="en">
+    
+<style>
+body {
+  background-color: #ffffff9d;
+}
+
+.wrapper {
+  height: 650px;
+  width: 1080px;
+  margin: 50px auto;
+  border-radius: 7px 7px 7px 7px;
+  /* VIA CSS MATIC https://goo.gl/cIbnS */
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+
+.product-img {
+  float: left;
+  height: 550px;
+  width: 540px;
+  background-color: #ffffff;
+}
+
+.product-img img {
+  border-radius: 7px 0 0 7px;
+}
+
+.product-info {
+/* padding-top: 3%; */
+  float: left;
+  height: 325px;
+  width: 540px;
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
+}
+
+.product-text {
+  height: 300px;
+  width: 327px;
+}
+
+.product-text h1 {
+  margin: 0 0 0 38px;
+  padding-top: 52px;
+  font-size: 34px;
+  color: #474747;
+}
+.text h1 {
+  margin: 0 0 0 50px;
+  padding-top: 30px;
+  font-size: 34px;
+  text-align: center;;
+  color: #474747;
+}
+.text-wl {
+  margin: 0 0 0 50px;
+  font-size: 34px;
+  float: left;
+  color: #474747;
+}
+.product-text h1,
+.product-price-btn p {
+  font-family: 'Bentham', serif;
+}
+
+.product-text h2 {
+  margin: 0 0 47px 38px;
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #d2d2d2;
+  letter-spacing: 0.2em;
+}
+
+.product-text p {
+  height: 125px;
+  margin: 0 0 0 38px;
+  font-family: 'Playfair Display', serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 15px;
+  font-weight: lighter;
+  overflow: hidden;
+}
+
+.product-price-btn {
+  height: 103px;
+  width: 327px;
+  margin-top: 17px;
+  position: relative;
+}
+
+.product-price-btn p {
+  display: inline-block;
+  position: absolute;
+  top: -13px;
+  height: 50px;
+  font-family: 'Trocchi', serif;
+  margin: 0 0 0 38px;
+  font-size: 28px;
+  font-weight: lighter;
+  color: #474747;
+}
+
+span {
+  display: inline-block;
+  height: 50px;
+  font-family: 'Suranna', serif;
+  font-size: 34px;
+}
+
+/* .product-img button {
+  float: left;
+  display: inline-block;
+  height: 50px;
+  width: 150px;
+  margin: 20px 20px 20px 10px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #7ae4c6;
+  cursor: pointer;
+  outline: none;
+} */
+
+.product-price-btn button {
+  float: right;
+  display: inline-block;
+  height: 50px;
+  width: 176px;
+  margin: 0 40px 0 16px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #9cebd5;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-price-btn button:hover {
+  background-color: #79b0a1;
+}
+
+.container{
+        /* background-color: #eeeeee88; */
+        width: 500px;
+        height: 420px;
+        position: fixed;
+        /* top: 70px; */
+        /* left: 40px; */
+      }
+      .container2{
+        background-color: #e5e5e57a;
+        width: 200px;
+        height: 300px;
+        /* position: fixed; */
+        /* top: -350px; */
+        /* left:550px; */
+      }
+      .ribbon5 {
+    display: inline-block;
+    font-family:微软雅黑;
+    font-weight :bolder;
+    width: calc(100% + 20px);
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 50px;
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #79b0a1;
+    position: relative;
+    top: 10px;
+  }
+  .ribbon5:before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: 10px solid #79b0a1;
+    border-left: 10px solid transparent;
+    bottom: -10px;
+    left: 0;
+  }
+  .ribbon5:after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: 10px solid #568074;
+    border-right: 10px solid transparent;
+    right: 0;
+    bottom: -10px;
+  }
+
+  .zoomImage{
+    height: 300px;
+    /* width: 500px; */
+    padding-top: 10px;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+
+}
+.img_wrap{
+     width: 300px;
+     height: 320px;
+     /* border: 1px dashed #ccc; */
+     display: table-cell; 
+     vertical-align: middle;
+     text-align: center;
+     padding-top: 200px;
+  }
+</style>
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="/static/admin/component/pear/css/pear.css"/>
+    <script type="text/javascript" type="text/javascript">
+        function AutoResizeImage(maxWidth,maxHeight,objImg){
+    var img = new Image();
+    img.src = objImg.src;
+    var hRatio;
+    var wRatio;
+    var Ratio = 1;
+    var w = img.width;
+    var h = img.height;
+    wRatio = maxWidth / w;
+    hRatio = maxHeight / h;
+    if (maxWidth ==0 && maxHeight==0){
+        Ratio = 1;
+    }else if (maxWidth==0){
+        if (hRatio<1) Ratio = hRatio;
+    }else if (maxHeight==0){
+        if (wRatio<1) Ratio = wRatio;
+    }else if (wRatio<1 || hRatio<1){
+        Ratio = (wRatio<=hRatio?wRatio:hRatio);
+    }
+    if (Ratio<1){
+        w = w * Ratio;
+        h = h * Ratio;
+    }
+    objImg.height = h;
+    objImg.width = w;
+}
+       
+    </script>
+  <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
+  <style lang="scss" scoped>
+    .run{   
+        width:530px;
+        height: 320px;
+        margin: 20px auto;
+        /* // 用来表现四个边框样式的背景设置 */
+        background: linear-gradient(0deg, transparent 50%, rgb(9, 9, 9) 50%) repeat-y,  
+            linear-gradient(0deg, transparent 50%, rgb(0, 0, 0) 50%) repeat-y,
+            linear-gradient(90deg, transparent 50%, rgb(0, 0, 0) 50%) repeat-x, 
+            linear-gradient(90deg, transparent 50%, rgb(0, 0, 0) 50%) repeat-x;
+
+        /* // 分别对应上面四个背景的size，比如第一个1px 12px表示左边框背景填充宽1px,高12px;
+        // 此处的高指的是是一个透明横线+一个有颜色横线的高，并不是指整体高度，可理解为线段的密度
+        // 左边框的高度是由多个12px的高度线段构成的 */
+        background-size: 4px 12px, 4px 12px, 12px 4px, 12px 4px; 
+
+        /* // 分别对应上面四个背景的position，比如第一个0 0表示边框位于容器x轴原点、y轴原点;                                                               */
+        background-position: 0 0, 100% 0, 0 0, 0 100%;
+        animation: shine 1s infinite linear;          
+    }
+
+    .run_result{   
+        width:530px;
+        height: 320px;
+        margin: 20px auto;
+        /* // 用来表现四个边框样式的背景设置 */
+        background: linear-gradient(0deg, transparent 50%, rgb(255, 0, 0) 50%) repeat-y,  
+            linear-gradient(0deg, transparent 50%, rgb(255, 0, 0) 50%) repeat-y,
+            linear-gradient(90deg, transparent 50%, rgb(255, 0, 0) 50%) repeat-x, 
+            linear-gradient(90deg, transparent 50%, rgb(255, 0, 0) 50%) repeat-x;
+
+        /* // 分别对应上面四个背景的size，比如第一个1px 12px表示左边框背景填充宽1px,高12px;
+        // 此处的高指的是是一个透明横线+一个有颜色横线的高，并不是指整体高度，可理解为线段的密度
+        // 左边框的高度是由多个12px的高度线段构成的 */
+        background-size: 4px 12px, 4px 12px, 12px 4px, 12px 4px; 
+
+        /* // 分别对应上面四个背景的position，比如第一个0 0表示边框位于容器x轴原点、y轴原点;                                                               */
+        background-position: 0 0, 100% 0, 0 0, 0 100%;
+        animation: shine 1s infinite linear;  
+       
+
+        /* display: table-cell;  */
+        /* vertical-align: middle; */
+        /* text-align: center; */
+        /* padding-top: 20px; */
+
+    }
+
+    @keyframes shine {
+        from {
+        }
+        to {
+            /* // 比如第一个表示0 -12px在动画中表示左边框一秒内上移12px,视觉上就形成了向上滑动的效果 */
+            background-position: 0 -12px, 100% 12px, 12px 0, -12px 100%;
+        }
+    }    
+</style>
+ 
+</head>
+
+<body>
+
+  <div class="wrapper">
+      <div class="ribbon5">缺陷检测</div>
+    
+    <div class="product-img">
+                <div class="run" >
+                    <!-- <div class="'img_wrap"> -->
+
+                            <p style="width: 520;height: 320;text-align: center;vertical-align:middle;display: table-cell;">
+                        <img   onload="AutoResizeImage(500,300,this)" src="http://10.178.20.75:5000/defeat/video"  >
+                            </p>
+                        <!-- <img src="data:image/jpg;base64,这里是base64的编码"/> -->
+                        <!-- <script type='text/javascript' src='http://10.178.20.75:5000/defeat/video'></script> -->
+                        
+                    <!-- </div>  -->
+                </div>
+                
+
+        
+      
+    
+        </p>
+
+
+        <p style="text-align: center;">
+            <form class="layui-form" id="form" lay-filter="form" action="/defeat/result"><div class="layui-form-item adminj-sort-item" id="did_1653381936044_0" cpt_id="switch" style="width: 100%;">
+                <label class="layui-form-label">上传开关</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox" checked="" name="" lay-skin="switch" lay-filter="switchUpload" lay-text="NO|OFF" value="1">
+                </div>
+                <div class="layui-form-mid layui-word-aux">是否选择检测上传文件</div>
+    
+            </div><div class="layui-form-item adminj-sort-item" id="did_1653381936047_1" cpt_id="uploadFile" style="width: 100%;">
+                <label class="layui-form-label">检测图片</label>
+                <div class="layui-input-inline">
+                    <!-- <button type="button" class="layui-btn" id="test1">上传图片</button> -->
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="test1">上传图片</button>
+                        <div class="layui-upload-list" style="width: 30;height: 5;">
+                          <!-- <img class="layui-upload-img" id="demo1"> -->
+                          <!-- <p id="demoText"></p> -->
+                        </div>
+                        <div style="width: 120px;">
+                          <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demo">
+                            <div class="layui-progress-bar" lay-percent=""></div>
+                          </div>
+                        </div>
+                      </div>    
+                    <!-- <button type="button" class="layui-btn" id="uploadFile"><i class="layui-icon"></i>上传文件</button> -->
+                </div>
+                <div class="layui-input-inline adminj-upload-empty-div" style="margin-left: -60px; margin-bottom: 18px; margin-top: 18px;display:none"><div class="layui-progress" lay-filter="" lay-showpercent="true"><div class="layui-progress-bar" lay-percent="0%"></div></div></div>
+    <div class="layui-form-mid layui-word-aux">上传检测图片</div>
+    
+    
+            </div><div id="did_1653381936049_2" class="layui-form-item adminj-sort-item" cpt_id="submitData">
+                <div class="layui-input-block">
+                    <input type="text" id='detectType' name="local" value="1" hidden/>
+                    <input type="text"  id='detectImage' name="filename" value="" hidden/>
+                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="postButton" id="postButton">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+    
+            </div></form>
+        
+        </p>
+
+    </div>
+    <div class="product-info">
+        <div class="run_result">
+            <p style="width: 520;height: 320;text-align: center;vertical-align:middle;display: table-cell;">
+                <!-- <img src="data:image/jpg;base64,这里是base64的编码"/> -->
+                <!-- <script type='text/javascript' src='http://10.178.20.75:5000/defeat/video'></script> -->
+                <img   onload="AutoResizeImage(400,300,this)" src="/static/admin/admin/images/act.jpg"  id="resultImage" >
+               
+            </p> 
+
+
+        </div>
+        <p style="font-weight: bold;">检测结果：</p>
+        <table class="layui-hide" id="test"></table>
+  </div> 
+<script src="/static/admin/component/layui/layui.js"></script>
+<script src="/static/admin/component/pear/pear.js"></script>
+
+<script>
+layui.use(['upload', 'element', 'layer','form'], function(){
+  var $ = layui.jquery
+  ,form=layui.form
+  ,upload = layui.upload
+  ,element = layui.element
+  ,layer = layui.layer
+  ,table=layui.table;
+  
+  //常规使用 - 普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '/defeat/upload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').attr('src', result); //图片链接（base64）
+      });
+      
+      element.progress('demo', '0%'); //进度条复位
+      layer.msg('上传中', {icon: 16, time: 0});
+    }
+    ,done: function(res){
+      //如果上传失败
+    console.log(res);
+    //   var res_data=JSON.parse(res);
+    //   console.log(res.draw_url)
+    
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }else
+      {
+        layer.msg('上传成功');
+        document.getElementById("detectImage").value=res.filename;
+        // console.log(document.getElementById("detectImage").value);
+      }
+
+      
+      //上传成功的一些操作
+      //……
+      $('#demoText').html(''); //置空上传失败的状态
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+       uploadInst.upload();
+      });
+    }
+    //进度条
+    ,progress: function(n, elem, e){
+      element.progress('demo', n + '%'); //可配合 layui 进度条元素使用
+      if(n == 100){
+        layer.msg('上传完毕', {icon: 1});
+      }
+    }
+  });
+
+   //监听指定开关
+   form.on('switch(switchUpload)', function(data){
+
+    var type=document.getElementById("detectType").value;
+    if (type==1)
+    {
+        document.getElementById("detectType").value=0;
+        // console.log('changed to 0');
+    }else
+    {
+        document.getElementById("detectType").value=1;
+        // console.log('changed to 1');
+    }
+    console.log(document.getElementById("detectType").value)
+    layer.msg('检测上传图片缺陷功能：'+ (this.checked ? '开启' : '关闭'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：如果未开启此功能，则默认检测相机拍摄图片内的缺陷。', data.othis)
+  });
+
+  var resultData=[{'type': 0,'size': 0,'location':'(0,0)','score':0}]
+  table.render({
+    elem: '#test'
+    ,height: 180
+    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+    ,cols: [[
+      {field:'type', title: '种类', sort: true}
+      ,{field:'size', title: '大小'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+      ,{field:'location', title: '位置'}
+      ,{field:'score', title: '置信度',sort: true}
+    ]]
+    ,data: resultData
+    ,id: 'resultTable'
+  });
+
+  form.on('submit(postButton)', function(data){
+    $.get('/defeat/result',data.field,function(res){
+    layer.msg('检测成功');
+    //res就是返回的结果
+    console.log(res);
+    console.log(res.draw_url);
+    // 更新结果图片连接
+    document.getElementById('resultImage').src=res.draw_url;
+    // 更新数据表
+    image_info=res.image_info;
+    resultData=[]
+    for (let key in image_info) {
+        // console.log(key) // foo, bar
+        resultData.push(image_info[key])
+    }
+    // console.log(resultData)
+      
+      //执行重载
+      table.reload('resultTable', {
+        data: resultData
+      });
+    
+});
+     
+      return false; 
+    });
+
+
+  
+
+});
+
+
+  
+          var _json='{"did_1653381936044_0":{"id":"switch","name":"switch","required":"0","disabled":"","labelWidth":80,"rowWidth":100,"isSelect":"1","selectedValue":"0","defValue":"1","label":"上传开关","comment":"是否选择检测上传文件","divId":"did_1653381936044_0"},"did_1653381936047_1":{"id":"uploadFile","name":"file","required":"","disabled":"","labelWidth":80,"rowWidth":100,"validateRule":[],"label":"检测图片","comment":"上传检测图片","divId":"did_1653381936047_1"},"did_1653381936049_2":{"id":"submitData","name":"name1653380660657","divId":"did_1653381936049_2"}}';
+        
+</script>
+</body>
+
+</html>

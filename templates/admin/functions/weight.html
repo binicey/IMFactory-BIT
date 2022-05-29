@@ -1,0 +1,519 @@
+<html lang="en">
+    
+<style>
+body {
+  background-color: #ffffff9d;
+}
+
+.wrapper {
+  height: 650px;
+  width: 1080px;
+  margin: 50px auto;
+  border-radius: 7px 7px 7px 7px;
+  /* VIA CSS MATIC https://goo.gl/cIbnS */
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+
+.product-img {
+  float: left;
+  height: 550px;
+  width: 540px;
+  background-color: #ffffff;
+}
+
+.product-img img {
+  border-radius: 7px 0 0 7px;
+}
+
+.product-info {
+padding-top: 3%;
+  float: left;
+  height: 325px;
+  width: 540px;
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
+}
+
+.product-text {
+  height: 300px;
+  width: 327px;
+}
+
+.product-text h1 {
+  margin: 0 0 0 38px;
+  padding-top: 52px;
+  font-size: 34px;
+  color: #474747;
+}
+.text h1 {
+  margin: 0 0 0 50px;
+  padding-top: 30px;
+  font-size: 34px;
+  text-align: center;;
+  color: #474747;
+}
+.text-wl {
+  margin: 0 0 0 50px;
+  font-size: 34px;
+  float: left;
+  color: #474747;
+}
+.product-text h1,
+.product-price-btn p {
+  font-family: 'Bentham', serif;
+}
+
+.product-text h2 {
+  margin: 0 0 47px 38px;
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #d2d2d2;
+  letter-spacing: 0.2em;
+}
+
+.product-text p {
+  height: 125px;
+  margin: 0 0 0 38px;
+  font-family: 'Playfair Display', serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 15px;
+  font-weight: lighter;
+  overflow: hidden;
+}
+
+.product-price-btn {
+  height: 103px;
+  width: 327px;
+  margin-top: 17px;
+  position: relative;
+}
+
+.product-price-btn p {
+  display: inline-block;
+  position: absolute;
+  top: -13px;
+  height: 50px;
+  font-family: 'Trocchi', serif;
+  margin: 0 0 0 38px;
+  font-size: 28px;
+  font-weight: lighter;
+  color: #474747;
+}
+
+span {
+  display: inline-block;
+  height: 50px;
+  font-family: 'Suranna', serif;
+  font-size: 34px;
+}
+
+.product-img button {
+  float: left;
+  display: inline-block;
+  height: 50px;
+  width: 150px;
+  margin: 20px 20px 20px 10px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #7ae4c6;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-price-btn button {
+  float: right;
+  display: inline-block;
+  height: 50px;
+  width: 176px;
+  margin: 0 40px 0 16px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #9cebd5;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-price-btn button:hover {
+  background-color: #79b0a1;
+}
+
+.container{
+        /* background-color: #eeeeee88; */
+        width: 500px;
+        height: 420px;
+        position: fixed;
+        /* top: 70px; */
+        /* left: 40px; */
+      }
+      .container2{
+        background-color: #e5e5e57a;
+        width: 200px;
+        height: 300px;
+        /* position: fixed; */
+        /* top: -350px; */
+        /* left:550px; */
+      }
+      .ribbon5 {
+    display: inline-block;
+    font-family:微软雅黑;
+    font-weight :bolder;
+    width: calc(100% + 20px);
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 50px;
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #79b0a1;
+    position: relative;
+    top: 10px;
+  }
+  .ribbon5:before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: 10px solid #79b0a1;
+    border-left: 10px solid transparent;
+    bottom: -10px;
+    left: 0;
+  }
+  .ribbon5:after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: 10px solid #568074;
+    border-right: 10px solid transparent;
+    right: 0;
+    bottom: -10px;
+  }
+
+</style>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/static/admin/component/pear/css/pear.css"/>
+    <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+    <script type="text/javascript" type="text/javascript">
+
+    // Connecting to ROS
+    var ros = new ROSLIB.Ros({
+    url : 'ws://10.178.20.75:9090'
+    });
+
+    //判断是否连接成功并输出相应的提示消息到web控制台
+    ros.on('connection', function() {
+    console.log('Connected to websocket server.');
+    });
+    ros.on('error', function(error) {
+    console.log('Error connecting to websocket server: ', error);
+    });
+    ros.on('close', function() {
+    console.log('Connection to websocket server closed.');
+    });
+
+    </script>
+  <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="wrapper">
+      <div class="ribbon5">称重计数</div>
+    
+    <div class="product-img">
+        <div class ="container" id="container"></div>
+        <button onclick = "clock()" type="button">Publish</button>
+        <button onclick = "subscribe()" type="button">Subscribe</button>
+        <button onclick = "unsubscribe()" type="button">Unsubscribe</button>
+    </div>
+    <div class="product-info">
+        <div class ="container" id="container2"></div>
+        <!-- <h2>物料信息</h2>
+        <div class="layui-carousel" id="test2" style="margin-top: 0px;">
+
+            <div carousel-item="">
+              <div>条目1</div>
+              <div>条目2</div>
+            </div>
+          </div>
+      <div class="product-text">
+        <div class ="container" id="container2"></div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+  </div> 
+<script>
+         // Publishing a Topic
+    //创建一个topic,它的名字是'/userCMD',,消息类型是'std_msgs/String'
+    var userCMD = new ROSLIB.Topic({
+      ros : ros,
+      name : '/userCMD',
+      messageType : 'std_msgs/String'
+    });
+    //创建一个message
+    var msg = new ROSLIB.Message({data:"w"});
+
+    // js定时器
+    var int=self.setInterval("clock()",100);
+    function clock()
+    {
+      userCMD.publish(msg);//发布msg消息
+    }
+    // function func()//在点击”Publish”按钮后发布消息，并对消息进行更改
+    // {
+    //   userCMD.publish(msg);//发布twist消息
+    // }
+
+    // Subscribing to a Topic
+    //创建一个topic,它的名字是'/weight',,消息类型是'std_msgs/Int32'
+    var listener = new ROSLIB.Topic({
+        ros : ros,
+        name : '/ElectronicBalance',
+        messageType : 'std_msgs/Int32'
+        });
+    
+    //在点击”Subscribe”按钮后订阅'/ElectronicBalance'的消息，并将其显示到网页中
+    var ebdata;
+    function subscribe()
+    {
+        listener.subscribe(
+            function(message) {
+            document.getElementById("output").innerHTML = ('Received message on ' + listener.name + ': ' + message.data);
+            ebdata=message.data
+          });
+
+    }
+    function unsubscribe()//在点击”Unsubscribe”按钮后取消订阅'/chatter'的消息
+    {
+        listener.unsubscribe();
+    }
+    
+
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+option = {
+  tooltip: {
+    formatter: '{a} <br/>{b} : {c} g'
+  },
+  series: [
+    {
+      name: '重量',
+      type: 'gauge',
+      progress: {
+        show: true
+      },
+      detail: {
+        valueAnimation: true,
+        formatter: '{value}'
+      },
+      min:0,
+      max:1500,
+      data: [
+        {
+          value: ebdata,
+          name: 'SCORE'
+        }
+      ]
+    }
+  ]
+};
+setInterval(function () {
+  myChart.setOption({
+    series: [
+      {
+        data: [
+          {
+            value: ebdata,
+            name:"WEIGHT"
+          }
+        ]
+      }
+    ]
+  });
+}, 1000);
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+
+// 动态折线图
+var dom = document.getElementById("container2");
+        var myChart = echarts.init(dom);
+        var app = {};
+        var option;
+        function randomData() {
+            // now = new Date(+now + 10);
+            now = new Date();
+            value = value + Math.random() * 21 - 10;
+            return {
+                name: now.toString(),
+                value: [now, Math.round(value)]
+            };
+        }
+        var data = [];
+        var now = +new Date();
+        var oneDay = 24 * 3600 * 1000;
+        var value = Math.random() * 1000;
+        for (var i = 0; i < 1000; i++) {
+            data.push(randomData());
+        }
+        option = {
+            title: {
+                text: '称重历史数据(g)'
+            },
+            tooltip: {
+                show: true,
+                trigger: 'axis',
+                formatter: function (params) {
+                    params = params[0];
+                    var date = new Date(params.name);
+                    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+                },
+                axisPointer: {
+                    animation: false
+                }
+            },
+            xAxis: {
+                type: 'time',
+                splitLine: {
+                    show: false
+                },
+                axisLabel:{
+                  formatter: function (value, index) {
+                    // 格式化成月/日，只在第一个刻度显示年份
+                    var date = new Date();
+                    var texts = [date.getMinutes(), date.getSeconds()];
+                    if (index === 0) {
+                        texts.unshift(date.getHours());
+                    }
+                    return texts.join(':');
+                }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%'],
+                splitLine: {
+                    show: true
+                }
+            },
+            series: [{
+                name: '模拟数据',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                data: data
+            }]
+        };
+
+        setInterval(function () {
+            for (var i = 0; i < 1; i++) {
+                data.shift();
+                data.push(randomData());
+            }
+            myChart.setOption({
+                series: [{
+                    data: data
+                }]
+            });
+        }, 1000);
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+// 底部条形图
+// var dom3 = document.getElementById('consolelog');
+//     var myChart = echarts.init(dom3, null, {
+//       renderer: 'canvas',
+//       useDirtyRect: false
+//     });
+//     var app = {};
+    
+//     var option;
+
+// option = {
+//   title: {
+//     text: '各工件重量'
+//   },
+//   tooltip: {
+//     trigger: 'axis',
+//     axisPointer: {
+//       type: 'shadow'
+//     }
+//   },
+//   legend: {},
+//   grid: {
+//     left: '3%',
+//     right: '4%',
+//     bottom: '3%',
+//     containLabel: true
+//   },
+//   xAxis: {
+//     type: 'value',
+//     boundaryGap: [0, 0.01]
+//   },
+//   yAxis: {
+//     type: 'category',
+//     data: ['object1','object2','object3']
+//   },
+//   series: [
+//     {
+//       name: 'weight(g)',
+//       type: 'bar',
+//       data: [1000,500,750]
+//     },
+
+//   ]
+// };
+
+// if (option && typeof option === 'object') {
+//       myChart.setOption(option);
+//     }
+
+//     window.addEventListener('resize', myChart.resize);
+
+</script>
+<script src="/static/admin/component/layui/layui.js"></script>
+<script src="/static/admin/component/pear/pear.js"></script>
+<script>
+    layui.use(['carousel', 'form'], function(){
+      var carousel = layui.carousel;
+      
+      //改变下时间间隔、动画类型、高度
+      carousel.render({
+        elem: '#test2'
+        ,interval: 1800
+        ,anim: 'fade'
+        ,height: '80px'
+        ,width: '520px'
+      });
+    });
+</script>
+</body>
+
+</html>

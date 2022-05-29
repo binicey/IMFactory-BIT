@@ -1,0 +1,332 @@
+<!--
+    v1.1 
+    2022.05.16
+    author:ljt
+    email:1355899668@qq.com
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+    <script type="text/javascript" type="text/javascript">
+
+    // Connecting to ROS
+    var ros = new ROSLIB.Ros({
+    url : 'ws://10.178.20.75:9090'
+    });
+
+    //判断是否连接成功并输出相应的提示消息到web控制台
+    ros.on('connection', function() {
+    console.log('Connected to websocket server.');
+    });
+    ros.on('error', function(error) {
+    console.log('Error connecting to websocket server: ', error);
+    });
+    ros.on('close', function() {
+    console.log('Connection to websocket server closed.');
+    });
+
+    </script>
+    <style>
+      .header{
+        width: 200px;
+        height: 100px;
+        position: fixed;
+        top: 0px;
+        right: 500px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+      }
+      .container{
+        background-color: #eeeeee88;
+        width: 500px;
+        height: 420px;
+        position: fixed;
+        top: 70px;
+        left: 40px;
+      }
+      .container2{
+        background-color: #e5e5e57a;
+        width: 600px;
+        height: 300px;
+        position: fixed;
+        top: -350px;
+        left:550px;
+      }
+      .button{
+        background-color: #eeeeee88;
+        width: 500px;
+        height: 420px;
+        position: fixed;
+        top: 400px;
+        left: 0px;
+      }
+      .consolelog{
+        background-color: #e5e5e57a;
+        width: 600px;
+        height: 100px;
+        position: fixed;
+        top: 390px;
+        left:550px;
+      }
+    </style>
+</head>
+<body style="height: 100%; margin: 0">
+    <div class = "header">
+      <h1>小车状态信息</h1>
+    </div>
+
+    <div class ="container" id="container"></div>
+    
+    <div id="info" style="width: 500px;height: 200px;position:fixed;top:400px;left: 130px">
+      <h3>小车重量(单位g):</h3>
+      
+      <button onclick = "clock()">Publish</button>
+      <button onclick = "subscribe()">Subscribe</button>
+      <button onclick = "unsubscribe()">Unsubscribe</button>
+    </div>
+    <div class="container2" id="container2"></div>
+
+    <div class="consolelog" id="consolelog">
+      <h2>这里放物料重量信息或打印日志</h2>
+    </div>
+
+<script>
+    // Publishing a Topic
+    //创建一个topic,它的名字是'/userCMD',,消息类型是'std_msgs/String'
+    var userCMD = new ROSLIB.Topic({
+      ros : ros,
+      name : '/userCMD',
+      messageType : 'std_msgs/String'
+    });
+    //创建一个message
+    var msg = new ROSLIB.Message({data:"w"});
+
+    // js定时器
+    var int=self.setInterval("clock()",100);
+    function clock()
+    {
+      userCMD.publish(msg);//发布msg消息
+    }
+    // function func()//在点击”Publish”按钮后发布消息，并对消息进行更改
+    // {
+    //   userCMD.publish(msg);//发布twist消息
+    // }
+
+    // Subscribing to a Topic
+    //创建一个topic,它的名字是'/weight',,消息类型是'std_msgs/Int32'
+    var listener = new ROSLIB.Topic({
+        ros : ros,
+        name : '/ElectronicBalance',
+        messageType : 'std_msgs/Int32'
+        });
+    
+    //在点击”Subscribe”按钮后订阅'/ElectronicBalance'的消息，并将其显示到网页中
+    var ebdata;
+    function subscribe()
+    {
+        listener.subscribe(
+            function(message) {
+            document.getElementById("output").innerHTML = ('Received message on ' + listener.name + ': ' + message.data);
+            ebdata=message.data
+          });
+
+    }
+    function unsubscribe()//在点击”Unsubscribe”按钮后取消订阅'/chatter'的消息
+    {
+        listener.unsubscribe();
+    }
+    
+
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+option = {
+  tooltip: {
+    formatter: '{a} <br/>{b} : {c} g'
+  },
+  series: [
+    {
+      name: '重量',
+      type: 'gauge',
+      progress: {
+        show: true
+      },
+      detail: {
+        valueAnimation: true,
+        formatter: '{value}'
+      },
+      min:0,
+      max:1500,
+      data: [
+        {
+          value: ebdata,
+          name: 'SCORE'
+        }
+      ]
+    }
+  ]
+};
+setInterval(function () {
+  myChart.setOption({
+    series: [
+      {
+        data: [
+          {
+            value: ebdata,
+            name:"WEIGHT"
+          }
+        ]
+      }
+    ]
+  });
+}, 1000);
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+
+// 动态折线图
+var dom = document.getElementById("container2");
+        var myChart = echarts.init(dom);
+        var app = {};
+        var option;
+        function randomData() {
+            // now = new Date(+now + 10);
+            now = new Date();
+            value = value + Math.random() * 21 - 10;
+            return {
+                name: now.toString(),
+                value: [now, Math.round(value)]
+            };
+        }
+        var data = [];
+        var now = +new Date();
+        var oneDay = 24 * 3600 * 1000;
+        var value = Math.random() * 1000;
+        for (var i = 0; i < 1000; i++) {
+            data.push(randomData());
+        }
+        option = {
+            title: {
+                text: '动态数据 + 时间坐标轴'
+            },
+            tooltip: {
+                show: true,
+                trigger: 'axis',
+                formatter: function (params) {
+                    params = params[0];
+                    var date = new Date(params.name);
+                    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+                },
+                axisPointer: {
+                    animation: false
+                }
+            },
+            xAxis: {
+                type: 'time',
+                splitLine: {
+                    show: false
+                },
+                axisLabel:{
+                  formatter: function (value, index) {
+                    // 格式化成月/日，只在第一个刻度显示年份
+                    var date = new Date();
+                    var texts = [date.getMinutes(), date.getSeconds()];
+                    if (index === 0) {
+                        texts.unshift(date.getHours());
+                    }
+                    return texts.join(':');
+                }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%'],
+                splitLine: {
+                    show: true
+                }
+            },
+            series: [{
+                name: '模拟数据',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                data: data
+            }]
+        };
+
+        setInterval(function () {
+            for (var i = 0; i < 1; i++) {
+                data.shift();
+                data.push(randomData());
+            }
+            myChart.setOption({
+                series: [{
+                    data: data
+                }]
+            });
+        }, 1000);
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+// 底部条形图
+// var dom3 = document.getElementById('consolelog');
+//     var myChart = echarts.init(dom3, null, {
+//       renderer: 'canvas',
+//       useDirtyRect: false
+//     });
+//     var app = {};
+    
+//     var option;
+
+// option = {
+//   title: {
+//     text: '各工件重量'
+//   },
+//   tooltip: {
+//     trigger: 'axis',
+//     axisPointer: {
+//       type: 'shadow'
+//     }
+//   },
+//   legend: {},
+//   grid: {
+//     left: '3%',
+//     right: '4%',
+//     bottom: '3%',
+//     containLabel: true
+//   },
+//   xAxis: {
+//     type: 'value',
+//     boundaryGap: [0, 0.01]
+//   },
+//   yAxis: {
+//     type: 'category',
+//     data: ['object1','object2','object3']
+//   },
+//   series: [
+//     {
+//       name: 'weight(g)',
+//       type: 'bar',
+//       data: [1000,500,750]
+//     },
+
+//   ]
+// };
+
+// if (option && typeof option === 'object') {
+//       myChart.setOption(option);
+//     }
+
+//     window.addEventListener('resize', myChart.resize);
+    </script>
+</body>

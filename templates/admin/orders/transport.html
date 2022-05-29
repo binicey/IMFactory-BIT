@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+        <style>
+          body {
+            background-color: #ffffff9d;
+          }
+          
+          .wrapper {
+            height: 650px;
+            width: 1080px;
+            margin: 50px auto;
+            border-radius: 7px 7px 7px 7px;
+            /* VIA CSS MATIC https://goo.gl/cIbnS */
+            -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+          }
+          
+          .product-img {
+            float: left;
+            height: 550px;
+            width: 540px;
+            background-color: #ffffff;
+          }
+          
+          .product-img img {
+            border-radius: 7px 0 0 7px;
+          }
+          
+          .product-info {
+          padding-top: 3%;
+            float: left;
+            height: 325px;
+            width: 540px;
+            border-radius: 0 7px 10px 7px;
+            background-color: #ffffff;
+          }
+          
+          .product-text {
+            height: 300px;
+            width: 327px;
+          }
+          
+          .product-text h1 {
+            margin: 0 0 0 38px;
+            padding-top: 52px;
+            font-size: 34px;
+            color: #474747;
+          }
+          .text h1 {
+            margin: 0 0 0 50px;
+            padding-top: 30px;
+            font-size: 34px;
+            text-align: center;;
+            color: #474747;
+          }
+          .text-wl {
+            margin: 0 0 0 50px;
+            font-size: 34px;
+            float: left;
+            color: #474747;
+          }
+          .product-text h1,
+          .product-price-btn p {
+            font-family: 'Bentham', serif;
+          }
+          
+          .product-text h2 {
+            margin: 0 0 47px 38px;
+            font-size: 13px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #d2d2d2;
+            letter-spacing: 0.2em;
+          }
+          
+          .product-text p {
+            height: 125px;
+            margin: 0 0 0 38px;
+            font-family: 'Playfair Display', serif;
+            color: #8d8d8d;
+            line-height: 1.7em;
+            font-size: 15px;
+            font-weight: lighter;
+            overflow: hidden;
+          }
+          
+          .product-price-btn {
+            height: 103px;
+            width: 327px;
+            margin-top: 17px;
+            position: relative;
+          }
+          
+          .product-price-btn p {
+            display: inline-block;
+            position: absolute;
+            top: -13px;
+            height: 50px;
+            font-family: 'Trocchi', serif;
+            margin: 0 0 0 38px;
+            font-size: 28px;
+            font-weight: lighter;
+            color: #474747;
+          }
+          
+          span {
+            display: inline-block;
+            height: 50px;
+            font-family: 'Suranna', serif;
+            font-size: 34px;
+          }
+          
+          .product-img button {
+            /* float: left; */
+            display: inline-block;
+            height: 50px;
+            width: 150px;
+            margin: 20px 20px 20px 10px;
+            box-sizing: border-box;
+            border: transparent;
+            border-radius: 60px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            font-weight: bolder;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #ffffff;
+            background-color: #7ae4c6;
+            cursor: pointer;
+            outline: none;
+          }
+          
+          .product-price-btn button {
+            /* float: right; */
+            display: inline-block;
+            height: 50px;
+            width: 176px;
+            margin: 0 40px 0 16px;
+            box-sizing: border-box;
+            border: transparent;
+            border-radius: 60px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #ffffff;
+            background-color: #9cebd5;
+            cursor: pointer;
+            outline: none;
+          }
+          
+          .product-price-btn button:hover {
+            background-color: #79b0a1;
+          }
+          
+          .container{
+                  /* background-color: #eeeeee88; */
+                  width: 650px;
+                  height: 500px;
+                  /* position: fixed; */
+                  position: relative;
+                  /* top: 70px;
+                  left: 40px; */
+                  border-radius:25px;
+                }
+                .container2{
+                  /* background-color: #e5e5e57a; */
+                  width: 300px;
+                  height: 400px;
+                  position: relative;
+                  /* top: -400px;
+                  left:500px; */
+                  border-radius: 25px;
+                }
+                .ribbon5 {
+              display: inline-block;
+              font-family:微软雅黑;
+              font-weight :bolder;
+              width: calc(100% + 20px);
+              height: 80px;
+              line-height: 80px;
+              text-align: center;
+              font-size: 50px;
+              margin-left: -10px;
+              margin-right: -10px;
+              background: #79b0a1;
+              position: relative;
+              top: 10px;
+            }
+            .ribbon5:before {
+              content: "";
+              position: absolute;
+              height: 0;
+              width: 0;
+              border-top: 10px solid #79b0a1;
+              border-left: 10px solid transparent;
+              bottom: -10px;
+              left: 0;
+            }
+            .ribbon5:after {
+              content: "";
+              position: absolute;
+              height: 0;
+              width: 0;
+              border-top: 10px solid #568074;
+              border-right: 10px solid transparent;
+              right: 0;
+              bottom: -10px;
+            }
+         
+        </style>
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
+  
+            <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>        
+    </head>
+
+    <body style="height: 100%; margin: 0">
+      <div class="wrapper">
+        <div class="ribbon5">生产作业计划
+        </div>
+        <!-- 图表容器 -->
+        <div class="product-img">
+          <div class="container" id="container1" style="top:40px;left:0px;"></div>
+        </div>
+        <!-- 表格容器 -->
+        <div class="product-img">
+        <div class="container2", id="container2" style="height:100%;top:50px;right:50px;">
+        
+        </div>    
+      </div>
+ <!-- javascript -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+        <script type="text/javascript">
+
+// 右侧甘特图
+var dom = document.getElementById('container1');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    var data = [];
+var dataCount = 10;
+var startTime = +new Date();
+var categories = ['工位1', '工位2', '工位3','工位4','工位5','工位6','工位7','工位8'];
+var types = [
+  { name: '工件1', color: '#7b9ce1' },
+  { name: '工件2', color: '#dc77dc' },
+  { name: '工件3', color: '#75d874' },
+  { name: '工件4', color: '#e0bc78' },
+];
+// Generate mock data
+categories.forEach(function (category, index) {
+  var baseTime = startTime;
+  for (var i = 0; i < dataCount; i++) {
+    var typeItem = types[Math.round(Math.random() * (types.length - 1))];
+    var duration = Math.round(Math.random() * 100); 
+    data.push({
+      name: typeItem.name,
+      value: [index, baseTime, (baseTime += duration), duration],
+      itemStyle: {
+        normal: {
+          color: typeItem.color
+        }
+      }
+    });
+    baseTime += Math.round(Math.random() * 20);
+  }
+});
+function renderItem(params, api) {
+  var categoryIndex = api.value(0);
+  var start = api.coord([api.value(1), categoryIndex]);
+  var end = api.coord([api.value(2), categoryIndex]);
+  var height = api.size([0, 1])[1] * 0.6;
+  var rectShape = echarts.graphic.clipRectByRect(
+    {
+      x: start[0],
+      y: start[1] - height / 2,
+      width: end[0] - start[0],
+      height: height
+    },
+    {
+      x: params.coordSys.x,
+      y: params.coordSys.y,
+      width: params.coordSys.width,
+      height: params.coordSys.height
+    }
+  );
+  return (
+    rectShape && {
+      type: 'rect',
+      transition: ['shape'],
+      shape: rectShape,
+      style: api.style()
+    }
+  );
+}
+option = {
+  tooltip: {
+    formatter: function (params) {
+      return params.marker + params.name + ': ' + params.value[3] + ' min';
+    }
+  },
+  title: {
+    text: '工件工序分布图',
+    left: 'center'
+  },
+  dataZoom: [
+    {
+      type: 'slider',
+      filterMode: 'weakFilter',
+      showDataShadow: false,
+      top: 400,
+      labelFormatter: ''
+    },
+    {
+      type: 'inside',
+      filterMode: 'weakFilter'
+    }
+  ],
+  grid: {
+    height: 300
+  },
+  xAxis: {
+    min: startTime,
+    scale: true,
+    axisLabel: {
+      formatter: function (val) {
+        return Math.max(0, val - startTime) + ' min';
+      }
+    }
+  },
+  yAxis: {
+    data: categories
+  },
+  series: [
+    {
+      type: 'custom',
+      renderItem: renderItem,
+      itemStyle: {
+        opacity: 0.8
+      },
+      encode: {
+        x: [1, 2],
+        y: 0
+      },
+      data: data
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+
+// 右侧图表
+// var chartDom = document.getElementById('container2');
+// var myChart = echarts.init(chartDom);
+// var option;
+
+// option = {
+//   legend: {
+//     top: 'bottom'
+//   },
+//   toolbox: {
+//     show: true,
+//     feature: {
+//       mark: { show: true },
+//       dataView: { show: true, readOnly: false },
+//       restore: { show: true },
+//       saveAsImage: { show: true }
+//     }
+//   },
+//   series: [
+//     {
+//       name: 'Nightingale Chart',
+//       type: 'pie',
+//       radius: [50, 250],
+//       center: ['50%', '50%'],
+//       roseType: 'area',
+//       itemStyle: {
+//         borderRadius: 8
+//       },
+//       data: [
+//         { value: 40, name: 'rose 1' },
+//         { value: 38, name: 'rose 2' },
+//         { value: 32, name: 'rose 3' },
+//         { value: 30, name: 'rose 4' },
+//         { value: 28, name: 'rose 5' },
+//         { value: 26, name: 'rose 6' },
+//         { value: 22, name: 'rose 7' },
+//         { value: 18, name: 'rose 8' }
+//       ]
+//     }
+//   ]
+// };
+
+// option && myChart.setOption(option);
+  
+
+        </script>
+    </body>
+</html>
+    
