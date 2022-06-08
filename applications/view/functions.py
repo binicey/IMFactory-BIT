@@ -148,8 +148,8 @@ def detectImg():
     else:
         return jsonify({'status':200})
     return  jsonify({'status': 1,
-                        'image_url': 'http://10.178.20.75:5000/tmp/ct/' + pid,
-                        'draw_url': 'http://10.178.20.75:5000/tmp/draw/' + pid,
+                        'image_url': '/tmp/ct/' + pid,
+                        'draw_url': '/tmp/draw/' + pid,
                         'pid':pid,
                         'image_info': image_info})
 
@@ -169,3 +169,9 @@ def show_photo(file):
 @permission_required("audio:info")
 def audio_control():
     return render_template('admin/functions/audio.html')
+
+# 在线vnc
+@index_bp.get('/novnc')
+@view_logging_required
+def vnc_web():
+    return render_template('admin/novnc/vnc.html')

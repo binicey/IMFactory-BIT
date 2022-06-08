@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html style="height: 100%">
     <head>
@@ -219,7 +218,7 @@
   
             <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>        
-    </head>
+          </head>
 
     <body style="height: 100%; margin: 0">
       <div class="wrapper">
@@ -230,53 +229,95 @@
           <div class="container" id="container1" style="top:40px;left:0px;"></div>
         </div>
         <!-- 表格容器 -->
-        <div class="product-img">
-        <div class="container2", id="container2" style="height:100%;top:50px;right:50px;">
-        
-        </div>    
+        <div class="product-img"> 
+          <div class="container2",id="container2",style="height:100%"></div>
+          <div class="container2", id="container4" style="top:-130px;left:100px;width:400px;height:300px"></div> 
+        </div>
+        <div class="container2", id="container2" style="width: 400px;height:200px;top:-500px;left:650px;">
+          <table id="example" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <h3>算法分析</h3>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>种群数</th>
+                <th>100</th>
+              </tr>
+              <tr>
+                <th>迭代次数</th>
+                <th>100</th>
+              </tr>
+              <tr>
+                <th>算法所用时间</th>
+                <th>1.5s</th>
+              </tr>
+              <tr>
+                <th>优化结果</th>
+                <th>100min</th>
+              </tr>
+            </tbody>
+            
+          </table>
+        </div>
       </div>
  <!-- javascript -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
         <script type="text/javascript">
 
-// 右侧甘特图
-var dom = document.getElementById('container1');
+var myJson;
+$(document).ready(function(){
+  $.ajax({
+    type: "get",
+    dataType: "json",
+    url: "/static/data/shengchan2.json",
+    success: function(data1){
+      myJson  = data1;
+// 左侧图表
+    var dom = document.getElementById('container1');
     var myChart = echarts.init(dom, null, {
       renderer: 'canvas',
       useDirtyRect: false
     });
-    var app = {};
-    
+    var app = {}; 
     var option;
-
     var data = [];
-var dataCount = 10;
-var startTime = +new Date();
+var dataCount = myJson.items.length;
+var startTime = +new Date();//获取当前时间戳
 var categories = ['工位1', '工位2', '工位3','工位4','工位5','工位6','工位7','工位8'];
+// types 决定有多少工件 有name和color两个属性
 var types = [
-  { name: '工件1', color: '#7b9ce1' },
-  { name: '工件2', color: '#dc77dc' },
-  { name: '工件3', color: '#75d874' },
-  { name: '工件4', color: '#e0bc78' },
+  { name: 1, color: '#7b9ce1' },
+  { name: 2, color: '#dc77dc' },
+  { name: 3, color: '#75d874' },
+  { name: 4, color: '#e0bc78' },
 ];
 // Generate mock data
 categories.forEach(function (category, index) {
   var baseTime = startTime;
   for (var i = 0; i < dataCount; i++) {
-    var typeItem = types[Math.round(Math.random() * (types.length - 1))];
-    var duration = Math.round(Math.random() * 100); 
-    data.push({
-      name: typeItem.name,
-      value: [index, baseTime, (baseTime += duration), duration],
-      itemStyle: {
-        normal: {
-          color: typeItem.color
-        }
-      }
-    });
-    baseTime += Math.round(Math.random() * 20);
-  }
+    for(var j=0;j<types.length;j++){
+      if(myJson.items[i].item == types[j].name){
+        var typeItem = types[myJson.items[i].item-1];//索引types里其中一种工件
+        var duration = myJson.items[i].duration; //0-100的整数
+        data.push({
+          name: typeItem.name,
+          //索引 开始时间 结束时间 持续时间
+          value: [myJson.items[i].machine, baseTime, (baseTime += myJson.items[i].duration), myJson.items[i].duration],
+          itemStyle: {
+            normal: {
+            color: typeItem.color
+              }
+            }
+          });
+          baseTime += Math.round(Math.random() * 20); //初始时间+=0-20随机数
+          break;
+          }
+    }
+  };
 });
+
 function renderItem(params, api) {
   var categoryIndex = api.value(0);
   var start = api.coord([api.value(1), categoryIndex]);
@@ -306,6 +347,7 @@ function renderItem(params, api) {
   );
 }
 option = {
+//   提示
   tooltip: {
     formatter: function (params) {
       return params.marker + params.name + ': ' + params.value[3] + ' min';
@@ -359,56 +401,100 @@ option = {
   ]
 };
 
-    if (option && typeof option === 'object') {
-      myChart.setOption(option);
+
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+    }
+window.addEventListener('resize', myChart.resize);
+
+
+// 右侧折线图
+var chartDom = document.getElementById('container4');
+var myChart = echarts.init(chartDom);
+var option;
+option = {
+  title: {
+    text: '算法迭代情况'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  legend: {
+    data: ['最短时间']
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      boundaryGap: false,
+      data: [0,10,20,30,40,50]
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: '最短时间',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(0, 221, 255)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(77, 119, 255)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [340,310,280,240,220,180]
+    }
+  ]
+};
+option && myChart.setOption(option);
     }
 
-    window.addEventListener('resize', myChart.resize);
+})
+})
 
-// 右侧图表
-// var chartDom = document.getElementById('container2');
-// var myChart = echarts.init(chartDom);
-// var option;
+// 右侧甘特图
 
-// option = {
-//   legend: {
-//     top: 'bottom'
-//   },
-//   toolbox: {
-//     show: true,
-//     feature: {
-//       mark: { show: true },
-//       dataView: { show: true, readOnly: false },
-//       restore: { show: true },
-//       saveAsImage: { show: true }
-//     }
-//   },
-//   series: [
-//     {
-//       name: 'Nightingale Chart',
-//       type: 'pie',
-//       radius: [50, 250],
-//       center: ['50%', '50%'],
-//       roseType: 'area',
-//       itemStyle: {
-//         borderRadius: 8
-//       },
-//       data: [
-//         { value: 40, name: 'rose 1' },
-//         { value: 38, name: 'rose 2' },
-//         { value: 32, name: 'rose 3' },
-//         { value: 30, name: 'rose 4' },
-//         { value: 28, name: 'rose 5' },
-//         { value: 26, name: 'rose 6' },
-//         { value: 22, name: 'rose 7' },
-//         { value: 18, name: 'rose 8' }
-//       ]
-//     }
-//   ]
-// };
 
-// option && myChart.setOption(option);
-  
+// ajax 
+$(document).ready(function () {
+  $('#example').DataTable();
+})  
 
         </script>
     </body>

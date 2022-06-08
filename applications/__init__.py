@@ -1,5 +1,6 @@
 import os
 
+from flask_cors import *
 from flask import Flask, Blueprint
 from common.flask_uploads import configure_uploads
 
@@ -29,7 +30,12 @@ def init_api(app: Flask) -> None:
 
 
 def create_app() -> Flask:
-    app = Flask('pear-admin-flask')
+    app = Flask('智造梦想')
+
+    #载入ico
+    
+    # 开启全局跨域
+    CORS(app,supports_credentials=True)
 
     # 引入数据库配置
     app.config.from_object(config)

@@ -88,10 +88,21 @@
         const get_columns = () => [
           [
             { type: 'checkbox' },
-            { title: '产品名称', field: 'product_name', align: 'center', width: 100 },
-            // { title: '库存数量', field: 'material_num', align: 'center' },
-            // { title: '规格型号', field: 'model_speci', align: 'center', width: 200 },
-            // { title: '材料', field: 'material_mat', align: 'center' },
+            { title: '产品名称', field: 'product_name', align: 'center', width: 200 },
+             { title: '产品种类', field: 'product_cate', align: 'center' , width: 100 },
+            //  { title: '加工工艺流程', field: 'proc_flow', align: 'center', width: 200 },
+             { title: '工艺1', field: 'proc_flow1', align: 'center', width: 100 },
+             { title: '工艺2', field: 'proc_flow2', align: 'center', width: 100 },
+             { title: '工艺3', field: 'proc_flow3', align: 'center', width: 100 },
+             { title: '工艺4', field: 'proc_flow4', align: 'center', width: 100 },
+             { title: '机床1', field: 'machine1', align: 'center' , width: 100 },
+             { title: '机床2', field: 'machine2', align: 'center' , width: 100 },
+             { title: '机床3', field: 'machine3', align: 'center' , width: 100 },
+             { title: '机床4', field: 'machine4', align: 'center' , width: 100 },
+             { title: '机床5', field: 'machine5', align: 'center' , width: 100 },
+             { title: '机床6', field: 'machine6', align: 'center' , width: 100 },
+             { title: '机床7', field: 'machine7', align: 'center' , width: 100 },
+             { title: '机床8', field: 'machine8', align: 'center' , width: 100 },
             { title: '录入时间', field: 'enter_at', templet: '#user-createTime', align: 'center' },
             { title: '操作', toolbar: '#tool', align: 'center', width: 130 },
           ],
@@ -159,7 +170,7 @@
             type: 2,
             title: '新增',
             shade: 0.1,
-            area: ['550px', '550px'],
+            area: ['800px', '800px'],
             content: '/prod/add',
           })
         }
@@ -212,7 +223,7 @@
         }
 
         window.tool_remove = function (obj) {
-          layer.confirm('确定要删除该用户', { icon: 3, title: '提示' }, function (index) {
+          layer.confirm('确定要删除该产品', { icon: 3, title: '提示' }, function (index) {
             layer.close(index)
             let loading = layer.load()
             $.ajax({

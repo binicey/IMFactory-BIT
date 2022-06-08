@@ -1,0 +1,19 @@
+{
+    "items":[
+        {"item":2,"machine":1,"starttime":48,"endtime":348,"duration":300},
+        {"item":1,"machine":3,"starttime":48,"endtime":348,"duration":300},
+        {"item":2,"machine":5,"starttime":48,"endtime":348,"duration":300},
+        {"item":1,"machine":7,"starttime":48,"endtime":348,"duration":300},
+        {"item":2,"machine":4,"starttime":48,"endtime":348,"duration":300},
+        {"item":3,"machine":3,"starttime":48,"endtime":348,"duration":300},
+        {"item":4,"machine":1,"starttime":48,"endtime":348,"duration":300},
+        {"item":4,"machine":7,"starttime":48,"endtime":348,"duration":300},
+        {"item":1,"machine":2,"starttime":48,"endtime":348,"duration":300},
+        {"item":1,"machine":8,"starttime":48,"endtime":348,"duration":300},
+        {"item":4,"machine":2,"starttime":48,"endtime":348,"duration":300},
+        {"item":3,"machine":5,"starttime":48,"endtime":348,"duration":300},
+        {"item":2,"machine":6,"starttime":48,"endtime":348,"duration":300},
+        {"item":3,"machine":4,"starttime":48,"endtime":348,"duration":300},
+        {"item":3,"machine":6,"starttime":48,"endtime":348,"duration":300}
+        ]
+}

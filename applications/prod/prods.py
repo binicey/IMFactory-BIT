@@ -24,9 +24,20 @@ class ProdsResource(Resource):
         prods_data = [{
             'id': item.id,
             'product_name': item.product_name,
-            # 'material_num': item.material_num,
-            # 'model_speci': item.model_speci,
-            # 'material_mat': item.material_mat,
+            'product_cate': item.product_cate,
+            # 'proc_flow': item.proc_flow,
+            'proc_flow1': item.proc_flow1,
+            'proc_flow2': item.proc_flow2,
+            'proc_flow3': item.proc_flow3,
+            'proc_flow4': item.proc_flow4,
+            'machine1': item.machine1,
+            'machine2': item.machine2,
+            'machine3': item.machine3,
+            'machine4': item.machine4,
+            'machine5': item.machine5,
+            'machine6': item.machine6,
+            'machine7': item.machine7,
+            'machine8': item.machine8,
             'enter_at': str(item.enter_at),
         } for item in paginate.items]
         
@@ -36,18 +47,41 @@ class ProdsResource(Resource):
 
     def post(self):
         parser = reqparse.RequestParser()
-        parser.add_argument("product_name", type=str)
+        parser.add_argument("product_name", type=str, required=True, help="名称不能为空")
         # parser.add_argument("material_num", type=int, required=True, help="数量不能为空")
-        # parser.add_argument("model_speci", type=str)
-        # parser.add_argument("material_mat", type=str)
+        parser.add_argument("product_cate", type=str)
+        # parser.add_argument("proc_flow", type=int)
+        parser.add_argument("proc_flow1", type=int)
+        parser.add_argument("proc_flow2", type=int)
+        parser.add_argument("proc_flow3", type=int)
+        parser.add_argument("proc_flow4", type=int)
+        parser.add_argument("machine1", type=int)
+        parser.add_argument("machine2", type=int)
+        parser.add_argument("machine3", type=int)
+        parser.add_argument("machine4", type=int)
+        parser.add_argument("machine5", type=int)
+        parser.add_argument("machine6", type=int)
+        parser.add_argument("machine7", type=int)
+        parser.add_argument("machine8", type=int)
 
         res = parser.parse_args()
 
         prod = ProdModel()
         prod.product_name = res.product_name
-        # prod.material_num = res.material_num
-        # prod.model_speci = res.model_speci
-        # prod.material_mat = res.material_mat
+        prod.product_cate = res.product_cate
+        # prod.proc_flow = res.proc_flow
+        prod.proc_flow1 = res.proc_flow1
+        prod.proc_flow2 = res.proc_flow2
+        prod.proc_flow3 = res.proc_flow3
+        prod.proc_flow4 = res.proc_flow4
+        prod.machine1 = res.machine1
+        prod.machine2 = res.machine2
+        prod.machine3 = res.machine3
+        prod.machine4 = res.machine4
+        prod.machine5 = res.machine5
+        prod.machine6 = res.machine6
+        prod.machine7 = res.machine7
+        prod.machine8 = res.machine8
 
         db.session.add(prod)
         db.session.commit()
@@ -63,6 +97,20 @@ class ProdResource(Resource):
         def put(self, prod_id):
              parser = reqparse.RequestParser()
              parser.add_argument("product_name", type=str)
+             parser.add_argument("product_cate", type=str)
+            #  parser.add_argument("proc_flow", type=int)
+             parser.add_argument("proc_flow1", type=int)
+             parser.add_argument("proc_flow2", type=int)
+             parser.add_argument("proc_flow3", type=int)
+             parser.add_argument("proc_flow4", type=int)
+             parser.add_argument("machine1", type=int)
+             parser.add_argument("machine2", type=int)
+             parser.add_argument("machine3", type=int)
+             parser.add_argument("machine4", type=int)
+             parser.add_argument("machine5", type=int)
+             parser.add_argument("machine6", type=int)
+             parser.add_argument("machine7", type=int)
+             parser.add_argument("machine8", type=int)
             #  parser.add_argument("material_num", type=int, required=True, help="数量不能为空")
             #  parser.add_argument("model_speci", type=str)
             #  parser.add_argument("material_mat", type=str)
@@ -71,6 +119,20 @@ class ProdResource(Resource):
              prod = ProdModel.query.get(prod_id)
 
              prod.product_name = res.product_name
+             prod.product_cate = res.product_cate
+            #  prod.proc_flow = res.proc_flow
+             prod.proc_flow1 = res.proc_flow1
+             prod.proc_flow2 = res.proc_flow2
+             prod.proc_flow3 = res.proc_flow3
+             prod.proc_flow4 = res.proc_flow4
+             prod.machine1 = res.machine1
+             prod.machine2 = res.machine2
+             prod.machine3 = res.machine3
+             prod.machine4 = res.machine4
+             prod.machine5 = res.machine5
+             prod.machine6 = res.machine6
+             prod.machine7 = res.machine7
+             prod.machine8 = res.machine8
             #  prod.material_num = res.material_num
             #  prod.model_speci = res.model_speci
             #  prod.material_mat = res.material_mat

@@ -2,22 +2,17 @@ import logging
 import os
 
 # 主题面板的链接列表配置
-SYSTEM_NAME = "Pear Admin"
+SYSTEM_NAME = "智 造 梦 想"
 SYSTEM_PANEL_LINKS = [
     {
         "icon": "layui-icon layui-icon-auz",
         "title": "官方网站",
-        "href": "http://www.pearadmin.com"
-    },
-    {
-        "icon": "layui-icon layui-icon-auz",
-        "title": "开发文档",
-        "href": "http://www.pearadmin.com"
+        "href": "http://web.205213.xyz"
     },
     {
         "icon": "layui-icon layui-icon-auz",
         "title": "开源地址",
-        "href": "https://gitee.com/Jmysy/Pear-Admin-Layui"
+        "href": "https://github.com/binicey/IMFactory-BIT"
     }
 ]
 
